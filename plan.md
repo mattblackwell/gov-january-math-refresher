@@ -60,3 +60,25 @@ For the 18.06 videos, as recommended by the lecturer, you may find things move m
   - [Lecture 15: Projections onto Subspaces](http://www.youtube.com/watch?v=Y_Ac6KiQ1t0)
   - [Lecture 16: Projection Matrices and Least Squares](http://www.youtube.com/watch?v=osh80YCg_GM)
   - [Lecture 17: Orthogonal Matrices and Gram-Schmidt](http://www.youtube.com/watch?v=uNsCkP9mgRk)
+
+## Extra material
+
+The following are other topics that are useful for statistics but that we won't focus on so much in Gov 2002. 
+
+### Eigenvectors and eigenvalues
+
+- Reading: Strang Ch. 6
+- 3Blue1Brown Videos:
+  - [Chapter 13: Change of basis](https://youtu.be/P2LTAUO1TdA)
+  - [Chapter 14: Eigenvectors and eigenvalues](https://youtu.be/TgKwz5Ikpc8)
+- MIT 18.06 Videos:
+  - [Lecture 21: Eigenvalues and Eigenvectors](http://www.youtube.com/watch?v=lXNXrLcoerU)
+  - [Lecture 22: Diagonalization and Power of A](http://www.youtube.com/watch?v=13r9QY6cmjc)
+  - [Lecture 25: Symmetric Matrices and Positive Definiteness](http://www.youtube.com/watch?v=umt6BB1nJ4w)
+
+
+### Singular Value Decomposition
+
+- Reading: Strang Ch. 7
+- MIT 18.06 Videos:
+  - [Lecture 29: Singular Value Decomposition](http://www.youtube.com/watch?v=Nx0lRBaXoz4)
