@@ -1,4 +1,4 @@
-# January Linear Algebra Review
+# January Linear Algebra Review for Gov 2002
 
 To get the most out of Gov 2002, it will be very useful to have a working understanding of the basics of linear algebra. For Gov PhD students, you covered some of this in the Math Prefresher, but probably not enough to keep it fresh in your mind. This year, we are organizing an optional, self-guided review of the basics of linear algebra. It will take place (virtually of course) in the three weeks before the start of the Spring semester (January 4th-January 22nd). The content will be based on MIT's famous 18.06 course, and we will follow along with the textbook and videos for this class. 
 
@@ -14,6 +14,13 @@ If you cannot obtain a copy of the Strang textbook, please get in touch with Mat
 In general, we will follow MIT 18.06, but we also recommend a YouTube series from the [3Blue1Brown](https://www.3blue1brown.com) channel called the [Essence of Linear Algebra](https://www.youtube.com/playlist?list=PLZHQObOWTQDPD3MizzM2xVFitgF8hE_ab). These are a series of short videos that try to clarify the key principles in linear algebra in a visual and accessible way. They are fantastic. We recommend watching those videos before engaging with the Strang material to have some working intuition before diving into the more technical material. Some of the order is a little different, but don't worry too much about that. 
 
 For the 18.06 videos, as recommended by the lecturer, you may find things move more quickly watching them at 1.5x or 2x speed on youtube. 
+
+
+## Ed Discussion Board
+
+[Gov 2002 Ed Board](https://us.edstem.org/courses/3222)
+
+We will use the Ed platform for a message board and place to post course materials. If you sign up for the Linear Algebra review, we will add you to the Ed board for January and you can post questions there. 
 
 ## Week 1 (January 4th)
 
