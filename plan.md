@@ -13,7 +13,7 @@ If you cannot obtain a copy of the Strang textbook, please get in touch with Mat
 
 In general, we will follow MIT 18.06, but we also recommend a YouTube series from the [3Blue1Brown](https://www.3blue1brown.com) channel called the [Essence of Linear Algebra](https://www.youtube.com/playlist?list=PLZHQObOWTQDPD3MizzM2xVFitgF8hE_ab). These are a series of short videos that try to clarify the key principles in linear algebra in a visual and accessible way. They are fantastic. We recommend watching those videos before engaging with the Strang material to have some working intuition before diving into the more technical material. Some of the order is a little different, but don't worry too much about that. 
 
-For the 18.06 videos, as recommended by the lecturer, you may find things move more quickly watching them at 1.5x or 2x speed on youtube. 
+For the 18.06 videos, as recommended by the lecturer, you may find things move more quickly watching them at 1.25x or 1.5x speed on youtube. 
 
 
 ## Ed Discussion Board
