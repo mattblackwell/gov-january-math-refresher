@@ -18,7 +18,7 @@ For the 18.06 videos, as recommended by the lecturer, you may find things move m
 
 ## Ed Discussion Board
 
-[Gov 2002 Ed Board](https://us.edstem.org/courses/3222)
+[Gov JLAR Ed Board](https://us.edstem.org/courses/3224/)
 
 We will use the Ed platform for a message board and place to post course materials. If you sign up for the Linear Algebra review, we will add you to the Ed board for January and you can post questions there. 
 
