@@ -1,0 +1,93 @@
+---
+title: Week 1 Exercises
+author: Gov January Linear Algebra Review
+date: 2021-01-04
+output: tint::tintPdf
+header-includes:
+  - \usepackage{bm}
+  - \usepackage{mathtools}
+---
+
+1. (Strang 1.1.4) From the vectors, \(\bm{v} = \begin{bmatrix}2\\1\end{bmatrix}\) and \(\bm{w} = \begin{bmatrix}1\\2\end{bmatrix}\), find the components of $3\bm{v} + \bm{w}$ and $c\bm{v} + d\bm{w}$. 
+
+
+2. (Strang 1.2.1) Calculate the dot products $\bm{u \cdot v}$ and $\bm{u \cdot w}$ and $\bm{u \cdot}(\bm{v} + \bm{w})$ and $\bm{w\cdot v}$: 
+\[
+\bm{u} = \begin{bmatrix*}[r] -0.6 \\ 0.8\end{bmatrix*} \qquad
+\bm{v} = \begin{bmatrix} 4 \\ 3\end{bmatrix} \qquad
+\bm{w} = \begin{bmatrix} 1 \\ 2\end{bmatrix}
+\]
+
+3. (Strang 1.2.2) Compute the lengths \(\Vert\bm{u}\Vert\), \(\Vert\bm{v}\Vert\), and \(\Vert\bm{w}\Vert\) of the vectors in the last problem. Check the Schwarz inequalities $|\bm{u\cdot v}| \leq \Vert\bm{u}\Vert\Vert\bm{v}\Vert$ and  $|\bm{v\cdot w}| \leq \Vert\bm{v}\Vert\Vert\bm{w}\Vert$. 
+
+4. (Strang 1.2.19 and 1.2.21) There are two equivalent ways to write the triangle inequality:
+\[
+\Vert\bm{v} + \bm{w}\Vert^2 \leq \left( \Vert\bm{v}\Vert + \Vert\bm{w}\Vert \right)^2 \qquad \iff \qquad  \Vert\bm{v} + \bm{w}\Vert \leq \Vert\bm{v}\Vert + \Vert\bm{w}\Vert
+\]
+Use the Schwarz inequality to prove the first of these two inequalities. Hint: use these facts about dot products: $\bm{v \cdot w}=\bm{w\cdot v}$ and $\bm{u \cdot}(\bm{v} + \bm{w}) = \bm{u\cdot v} + \bm{u\cdot w}$. 
+
+5. (Strang 1.2.29) If $\Vert\bm{v}\Vert = 5$ and $\Vert\bm{w}\Vert = 3$, what are the smallest and largest possible values of $\Vert \bm{v} - \bm{w}\Vert$? What are the smallest and largest possible values of $\bm{v\cdot w}$?
+
+6. (Strang 2.1.9) Compute each $A\bm{x}$ by dot products of the rows with the column vector:
+\[
+\textrm{(a)}
+\begin{bmatrix*}[r]
+  1 & 2 & 4 \\
+  -2 & 3 & 1 \\
+  -4 & 1 & 2
+\end{bmatrix*}
+\begin{bmatrix}
+  2 \\ 2 \\ 3
+\end{bmatrix}
+\qquad
+\textrm{(b)}
+\begin{bmatrix*}
+  2 & 1 & 0 & 0 \\
+  1 & 2 & 1 & 0 \\
+  0 & 1 & 2 & 1 \\
+  0 & 0 & 1 & 2 
+\end{bmatrix*}
+\begin{bmatrix}
+  1 \\ 1\\ 1\\ 2
+\end{bmatrix}
+\]
+
+7. (Strang 2.1.10) Compute each  $A\bm{x}$ from the previous question as a combination of the columns of $A$. 
+
+8. (Strang 2.2.1-2) Use elimination to solve the following system of linear equations:
+\[
+\begin{aligned}
+  2x & +  3y = 1, \\
+  10x & + 9y = 11.  
+\end{aligned}
+\]
+If the right side changed to $(4, 44)$ what would the answer be?
+
+9. (Strang 2.3.24) Apply elimination to the 2 by 3 augmented matrix $[A\quad \bm{b}]$. What is the triangular system $U\bm{x} = \bm{c}$? What is the solution $\bm{x}$?
+\[
+A\bm{x} =
+\begin{bmatrix}
+  2 & 3 \\ 4 & 1 
+\end{bmatrix}
+\begin{bmatrix}
+  x_1 \\ x_2
+\end{bmatrix}
+=
+\begin{bmatrix}
+  1 \\ 17
+\end{bmatrix}.
+\]
+
+10. (Strang 2.4.1) Let $A$ be 3 by 5, $B$ be 5 by 3, $C$ be 5 by 1, and $D$ be 3 by 1. All entries of all of these matrices are 1. Which of the following matrix operations are allowed, and what are the results?
+\[
+BA \qquad AB \qquad ABD \qquad DC \qquad A(B+C)
+\]
+
+11. (Strang 2.5.12) If the product $C = AB$ is invertible ($A$ and $B$ are square), then $A$ itself is invertible. Find a formula for $A^{-1}$ that involves $C^{-1}$ and $B$.
+
+12. (Strang 2.5.13) If the product $M = ABC$ of three square matrices is invertible, then $B$ is invertible. (So are $A$ and $C$.) Find a formula for $B^{-1}$ that involves $M^{-1}$ and $A$ and $C$.
+
+
+13. (Strang 2.7.39, Challenge) Suppose $Q^{T}$ equals $Q^{-1}$ (transpose equals inverse, so $Q^{T}Q = I$). 
+  (a) Show that the columns $\bm{q}_1, \ldots, \bm{q}_n$ are the unit vectors: $\Vert \bm{q}_i\Vert^2 = 1$. 
+  (b) Show that every two different columns of $Q$ are perpendicular: $\bm{q}_1^{T}\bm{q}_2 = 0$. 
