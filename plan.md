@@ -7,7 +7,7 @@ To get the most out of Gov 2002, it will be very useful to have a working unders
 
 As the weeks approach, we will post a set of exercised to complete for each of the weeks from the Strang book. Solutions to those exercises will be available. We will also hold office hours in each of the weeks to answer questions or go over solutions to the exercises. 
 
-If you cannot obtain a copy of the Strang textbook, please get in touch with Matt. 
+If you cannot obtain a copy of the Strang textbook, please get in touch with Matt.
 
 ## Types of resources
 
@@ -37,7 +37,7 @@ We will use the Ed platform for a message board and place to post course materia
   - [Lecture 3: Multiplication and Inverse Matrices](http://www.youtube.com/watch?v=FX4C-JpTFgY)
   - [Lecture 4: Factorization into A = LU](http://www.youtube.com/watch?v=5hO3MrzPa0A)
   - [Lecture 5: Transposes, Permutation, Spaces R^n](http://www.youtube.com/watch?v=JibVXBElKL0)
-
+- Exercises: [Week 1](https://github.com/mattblackwell/gov-january-math-refresher/raw/main/week_01/ps_1.pdf)
 
 ## Week 2 (January 11th)
 
