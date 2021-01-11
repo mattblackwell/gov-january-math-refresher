@@ -1,0 +1,822 @@
+---
+title: Week 1 Review Session
+author: \textbf{Gov January Linear Algebra Review} \newline Soubhik Barari \newline Harvard University
+date: Jan 11, 2021
+output: beamer_presentation
+header-includes:
+  - \usepackage{bm}
+  - \usepackage{mathtools}
+  - \usepackage{tikz}
+  - \usepackage{amsmath}
+  - \usepackage{wasysym}
+  - \usetikzlibrary{calc}
+  - \usetikzlibrary{angles}
+  - \usetikzlibrary{patterns}
+  - \usetikzlibrary{quotes}
+  - \usepackage{pgfplots}
+  - \newcommand{\mat}[1]{\begin{bmatrix}#1\end{bmatrix}}
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Broad Overview 
+
+\textcolor{red}{Linear algebra} is an accounting system for multidimensional data (represented as **matrices**, which is composed of row or column **vectors**). 
+
+Some broad ``operations'' that this accounting system allows us to do with data: \pause
+
+- Transposition
+- Transformation
+- Elimination
+- Inversion
+- Combination
+- Summarization
+- Factorization or Decomposition
+
+\pause
+Why should we care? \pause \textit{Every} statistical method in social science explicitly or implicitly relies on this accounting system.
+
+# Broad Overview 
+
+We need \underline{tools} (e.g. definitions, theorems, inequalities, processes) to tell us how/when we can perform linear algebraic operations. Week 1 covered valuable tools including: \pause
+
+- Summarising and combining vectors
+  - Length (Schwarz inequality, Triangle inequality)
+  - Dot products
+- Gaussian elimination
+- Gauss-Jordan elimination
+- Matrix inversion
+
+# Plan
+
+Cover four problems $\rightsquigarrow$ discuss intuition and connect them to a real application in political science.
+
+- Problem 3 (1.2.2): summarising, combining vectors
+- Problem 6 (2.1.9): transforming matrices
+- Problem 9 (2.2.1-2): solving unknowns between matrices
+- Problem 11 (2.5.12): inverting matrices
+
+\color{red}{Don't feel self-conscious about interrupting if you're confused or have questions!}
+
+# Problem 3 (1.2.2): summarising, combining vectors
+\pause
+The simplest linear algebraic unit is a **vector** in some space (e.g. $\mathbb{R}^2$), where each dimension usually ``means something'':
+$$
+u = \mat{-0.6 \\ 0.8}, v = \mat{4 \\ 3}, w = \mat{1 \\ 2} \begin{matrix} \tiny \leftarrow \textnormal{support for gun control} \hfill \\ \tiny \leftarrow \textnormal{support for abortion access} \hfill \end{matrix}
+$$
+\pause 
+
+We can summarise a vector by its **length** (or norm):
+$$
+||u|| = \sqrt{  (-0.6)^2 + (0.8)^2  } = 1, \quad ||v|| = 5, \quad ||w|| = \sqrt{5}
+$$
+\pause
+We can also combine vectors into a single scalar via **dot products**:
+$$
+v \cdot w = \mat{4 \\ 3} \cdot \mat{1 \\ 2} = 4 \cdot 1 + 3 \cdot 2 = 10
+$$
+
+\pause 
+
+But, how does this dot product relate to their individual lengths?
+
+# Problem 3 (1.2.2): summarising, combining vectors
+
+According to the **Schwarz inequality**,
+$$
+\underbrace{|v \cdot w|}_{ \small \text{absolute value of dot product} } \leq \underbrace{||v|| \cdot ||w||}_{ \small \text{product of lengths} }
+$$
+\pause
+Indeed, we can confirm this is true for our vectors!
+$$
+|v \cdot w | = | 4 \cdot 1 + 3 \cdot 2 | = 10 < 5\sqrt{5} = ||v|| \cdot ||w||
+$$
+\pause
+Let's visualize this in our example space.
+
+# 
+
+\centering
+\scalebox{0.8}{
+\begin{tikzpicture}
+<!-- grid -->
+\draw[help lines, color=gray!30, dashed] (-4.9,-4.9) grid (4.9,4.9);
+<!-- axes -->
+\begin{scope}[transparency group, opacity=0.8]
+\draw[->,ultra thick] (-5,0)--(5,0) node[right,text width=2.5cm]{support for abortion access};
+\draw[->,ultra thick] (0,-5)--(0,5) node[above]{support for gun control};
+\end{scope}
+<!-- vectors -->
+\coordinate (o) at (0,0);
+\draw[->,thick] (0,0)--(4,3) node[above]{$v$};
+\coordinate (v) at (4,3);
+\draw[->,thick] (0,0)--(1,2) node[above]{$w$};
+\coordinate (w) at (1,2);
+
+<!-- length -->
+\uncover<2-5>{
+\draw [decorate,decoration={brace,amplitude=10pt},xshift=1pt] (4,3) -- (0,0) node [black,midway,xshift=0.5cm,yshift=-0.4cm,rotate=`r atan(3/4)*180/pi`] {\footnotesize $||v||= 5$};
+\draw [decorate,decoration={brace,amplitude=10pt},xshift=1pt] (0,0) -- (1,2) node [black,midway,xshift=-0.1cm,yshift=1cm,rotate=`r atan(2/1)*180/pi`] {\footnotesize $||w|| = \sqrt{5}$};
+}
+
+<!-- dot product explainer -->
+\uncover<3->{
+\node[text width=5cm, color=red] at (2.5, -0.25) (dot) { $|v \cdot w| = |v_1 \cdot w_1 + v_2 \cdot w_2| = \mathbf{10}$ };
+}
+\uncover<4-5>{
+\node[draw, text width = 6cm] at (3.25, -3) (dot2) {Intuitively, the dot product tells us how strongly $w$ and $v$ \underline{co-vary}.};
+}
+\uncover<5-5>{
+\node[draw, text width = 6cm] at (3.25, -4.5) (dot3) {Geometrically, the dot product can be defined as how strongly $w$ \underline{projects} onto $v$.};
+}
+\uncover<5->{
+\node[text width=5cm, color=red] at (2.5, -0.75) (dot) { $|v \cdot w| = ||p|| \cdot ||v|| = \mathbf{10}$ };
+}
+\uncover<5-5>{
+\path [-, color=gray!80, dashed] ($(o)!(w)!(v)$) edge (w); 
+}
+\uncover<5->{
+\draw[->, thick, color=red] (o) -- ($(o)!(w)!(v)$) node[above]{$p$};
+}
+
+<!-- dot product example 2 -->
+\uncover<6->{
+\draw[->,thick] (0,0)--(-2,1.5) node[above]{$x_1$};
+\coordinate (x_1) at (-2,1.5);
+}
+\uncover<7-8>{
+\path [-, color=gray!80, dashed] ($(x_1)!(w)!(o)$) edge (w); 
+}
+\uncover<7->{
+\draw[->, thick, color=orange] (o) -- ($(x_1)!(w)!(o)$) node[above]{$p_1$};
+}
+
+\uncover<8->{
+\node[text width=5cm, color=orange] at (2.25, -1.25) (dot) { $ \ \ |x_1 \cdot w| = |x_{11} \cdot w_1 + x_{12} \cdot w_2| = \mathbf{1}$ };
+\node[text width=5cm, color=orange] at (2.25, -1.75) (dot) { $ \ \ |x_1 \cdot w| = ||p_1|| \cdot ||w|| = \mathbf{1}$ };
+}
+<!-- dot product example 3 -->
+\uncover<9->{
+\draw[->,thick] (0,0)--(-1,-4) node[right]{$x_2$};
+\coordinate (x_2) at (-1,-4);
+}
+\uncover<10-11>{
+\draw[->, thick, color=blue] (o) -- ($(o)!(w)!(x_2)$) node[above]{$p_2$};
+\path [-, color=gray!80, dashed] ($(x_2)!(w)!(o)$) edge (w); 
+}
+\uncover<11->{
+\node[text width=5cm, color=blue] at (2.25, -2.25) (dot) { $ \ \ |x_2 \cdot w| = |x_{21} \cdot w_1 + x_{21} \cdot w_2| = \mathbf{9}$ };
+\node[text width=5cm, color=blue] at (2.25, -2.75) (dot) { $ \ \ |x_2 \cdot w| = ||p_2|| \cdot ||w|| = \mathbf{9}$ };
+}
+\end{tikzpicture}
+}
+
+# Problem 3 (1.2.2): summarising, combining vectors
+
+We can also combine vectors by \textbf{addition}:
+$$
+v + w = \mat{ 4 + 1 \\ 3 + 2 } = \mat{5 \\ 5}
+$$
+\pause
+and the **Triangle inequality** tells us how the length of the sum relates to length of its parts:
+$$
+||v + w|| \leq ||v|| + ||w||
+$$
+\pause
+In our case:
+$$
+||v + w|| = 5\sqrt{2} \leq 5 + \sqrt{5} = ||v|| + ||w||
+$$
+
+
+# 
+
+\centering
+\scalebox{0.8}{
+\begin{tikzpicture}
+<!-- grid -->
+\draw[help lines, color=gray!30, dashed] (-4.9,-4.9) grid (4.9,4.9);
+<!-- axes -->
+\begin{scope}[transparency group, opacity=0.8]
+\draw[->,ultra thick] (-5,0)--(5,0) node[right,text width=2.5cm]{support for abortion access};
+\draw[->,ultra thick] (0,-5)--(0,5) node[above]{support for gun control};
+\end{scope}
+<!-- vectors -->
+\coordinate (o) at (0,0);
+\draw[->,thick] (0,0)--(4,3) node[above]{$v$};
+\coordinate (v) at (4,3);
+\draw[->,thick] (0,0)--(1,2) node[above]{$w$};
+\coordinate (w) at (1,2);
+
+<!-- length -->
+\uncover<1-4>{
+\draw [decorate,decoration={brace,amplitude=10pt},xshift=1pt] (4,3) -- (0,0) node [black,midway,xshift=0.5cm,yshift=-0.4cm,rotate=`r atan(3/4)*180/pi`] {\footnotesize $||v||= 5$};
+\draw [decorate,decoration={brace,amplitude=10pt},xshift=1pt] (0,0) -- (1,2) node [black,midway,xshift=-0.1cm,yshift=1cm,rotate=`r atan(2/1)*180/pi`] {\footnotesize $||w|| = \sqrt{5}$};
+}
+
+\uncover<2->{
+\draw[->,dashed] (1,2)--(5,5);
+}
+
+\uncover<3->{
+\draw[->,thick,color=red] (0,0)--(5,5) node[above]{$w+v$};
+\coordinate (w+v) at (5,5);
+}
+\uncover<4->{
+\draw [decorate,color=red,decoration={brace,amplitude=10pt},xshift=1pt] (0,0) -- (5,5) node [black,midway,xshift=-0.1cm,yshift=1cm,rotate=`r atan(1)*180/pi`] {\footnotesize $||w+v|| = 5\sqrt{2}$};
+}
+
+\end{tikzpicture}
+}
+
+# Problem 6 (2.1.9): transforming matrices
+
+\pause
+Consider $3$ issues in U.S. politics: free trade, abortion access, and gun control. \pause Suppose we have the views of voters Maria, Dev, and Jinyang on each issue, their intensities of support ($+$) or opposition ($-$) encoded as vectors $a_1,a_2,a_3$ in $\mathbb{R}^3$.
+
+\pause
+We can collect these vectors into rows of matrix $\mathbf{A} = [a_1, a_2, a_3]$:
+\pause
+$$
+\bordermatrix{
+&\overbrace{}^\textnormal{free trade} 
+&\overbrace{}^\textnormal{abortion access} 
+&\overbrace{}^\textnormal{gun control}\cr 
+\llap{${\scriptstyle \textnormal{Maria}}\{$}& 1 & 2 & 4\cr 
+\llap{${\scriptstyle \textnormal{Dev}}\{$}& -2 & 3 & 1\cr
+\llap{${\scriptstyle \textnormal{Jinyang}}\{$}& -4 & 1 & 2\cr
+} = \mathbf{A}
+$$
+Suppose we want to scale down each person's views to a single ideology measure in $\mathbb{R}$ and collect it in a vector $b$. How would we do this?
+
+# Problem 6 (2.1.9): transforming matrices
+
+Let's say we have used some algorithms to compute a vector of the U.S. Democratic party platform's intensity of support/opposition of these three issues $x = [1, 3, 4]^{T}$. \pause 
+
+One method for ideologically scaling our voters is treating their positions as a **linear transformation** of the party's positions $\rightsquigarrow$ $\mathbf{A}x$.
+
+$$
+\mathbf{A}x = \begin{bmatrix} 1 & 2 & 4 \\ -2 & 3 & 1 \\ -4 & 1 & 2 \end{bmatrix} \begin{bmatrix} 1 \\ 3 \\ 4 \end{bmatrix} = b
+$$
+\pause
+There are two ways to conduct a linear transformation.
+
+# Problem 6 (2.1.9): transforming matrices
+
+\begin{enumerate}
+  \item<1-> As a dot product of row vectors with $x$:
+$$
+\mathbf{A}x = 
+\begin{bmatrix} 
+\only<1,2>{\color{red}{1} & \color{red}{2} & \color{red}{4}}
+\only<3->{1 & 2 & 4 } 
+\\
+\only<1-2,5->{-2 & 3 & 1} 
+\only<3,4>{\color{red}{-2} & \color{red}{3} & \color{red}{1}} 
+\\ 
+\only<1-4,7->{-4 & 1 & 2}
+\only<5,6>{\color{red}{-4} & \color{red}{1} & \color{red}{2}}
+\end{bmatrix} 
+\cdot
+\begin{bmatrix} 
+\only<1-6>{\color{red}{1} \\ \color{red}{3} \\ \color{red}{4}}
+\only<7->{1 \\ 3 \\ 4}
+\end{bmatrix} = 
+\begin{bmatrix} 
+\only<1>{?}\only<2>{\color{red}{23}}\only<3->{23} \\ 
+\only<1-3>{?}\only<4>{\color{red}{11}}\only<5->{11} \\ 
+\only<1-5>{?}\only<6>{\color{red}{7}}\only<7->{7} \\ 
+\end{bmatrix} 
+\only<12->{
+\begin{matrix}
+\leftarrow \textnormal{Maria's scaled ideology} \hfill \\
+\leftarrow \textnormal{Dev's scaled ideology} \hfill \\
+\leftarrow \textnormal{Jinyang's scaled ideology} \hfill 
+\end{matrix}
+}
+$$
+  \item<7-> As a sum of column vectors weighted by $x$:
+$$
+\mathbf{A}x = 
+\begin{bmatrix} 
+\only<7,9->{1}\only<8>{\color{red}{1}} & 
+\only<7-8,10->{2}\only<9>{\color{red}{2}} &
+\only<7-9,11->{4}\only<10>{\color{red}{4}}
+\\ 
+\only<7,9->{-2}\only<8>{\color{red}{-2}} & 
+\only<7-8,10->{3}\only<9>{\color{red}{3}} & 
+\only<7-9,11->{1}\only<10>{\color{red}{1}}
+\\ 
+\only<7,9->{-4}\only<8>{\color{red}{-4}} & 
+\only<7-8,10->{1}\only<9>{\color{red}{1}} & 
+\only<7-9,11->{2}\only<10>{\color{red}{2}}
+\end{bmatrix} 
+\cdot
+\begin{bmatrix} 
+\only<7,9->{1}\only<8>{\color{blue}{1}}
+\\ 
+\only<7-8,10->{3}\only<9>{\color{blue}{3}}
+\\ 
+\only<7-9,11->{4}\only<10>{\color{blue}{4}}
+\end{bmatrix} = 
+\only<8>{{\color{blue}{1}}}\only<9->{1} 
+\only<8->{
+\cdot
+\begin{bmatrix}
+\only<8>{\color{red}{1} \\ \color{red}{-2} \\ \color{red}{-4}}
+\only<9->{1 \\ -2 \\ 4}
+\end{bmatrix}
+}
+\only<9>{+ {\color{blue}{3}} \cdot }\only<10->{+ 3 \cdot}
+\only<9->{
+\begin{bmatrix}
+\only<9>{\color{red}{2} \\ \color{red}{3} \\ \color{red}{1}}
+\only<10->{2 \\ 3 \\ 1}
+\end{bmatrix}
+}
+\only<10>{+ {\color{blue}{4}} \cdot}\only<11->{+ 4 \cdot} 
+\only<10->{
+\begin{bmatrix}
+\only<10>{\color{red}{4} \\ \color{red}{1} \\ \color{red}{2}}
+\only<11->{4 \\ 1 \\ 2}
+\end{bmatrix}
+}
+\only<11->{
+= 
+\begin{bmatrix}
+23 \\ 11 \\ 7
+\end{bmatrix}
+}
+$$
+\end{enumerate}
+
+\only<12->{
+In either case, the results $b$ of the linear transformation of the party positions $(x)$ by our voters' issue positions $(\mathbf{A})$ reveals Maria to be the ``strongest Democrat''.
+}
+
+# Problem 9 (2.2.1-2): solving unknowns between matrices
+
+Now, suppose that we've collected two voters' issue positions, $\mathbf{A}$, \textit{and} we already asked them to numerically scale the strength of their Republican-Democrat affiliation (in $\mathbb{R}$), collected as vector $b$. \pause
+$$
+\bordermatrix{
+&\overbrace{}^\textnormal{public healthcare} 
+&\overbrace{}^\textnormal{military spending}\cr 
+\llap{${\scriptstyle \textnormal{Rashida}}\{$}& 2 & 3\cr 
+\llap{${\scriptstyle \textnormal{Jeb}}\{$}& 4 & 1\cr
+} = \mathbf{A}, \quad\quad\quad
+\bordermatrix{
+& \cr 
+\llap{${\scriptstyle \textnormal{Rashida}}\{$}& 1\cr 
+\llap{${\scriptstyle \textnormal{Jeb}}\{$}& 17\cr
+} = b
+$$
+\pause
+This time, we \textit{don't} have measures of $x$, the ``Democratic-ness'' of support for each issue. Can we solve for this, though?
+
+$$
+\mathbf{A}x = b \quad \sim \quad 
+\begin{bmatrix}
+2 & 3 \\
+4 & 1
+\end{bmatrix} \cdot 
+\begin{bmatrix}
+x_1 \\
+x_2
+\end{bmatrix} = 
+\begin{bmatrix}
+1 \\
+17
+\end{bmatrix}
+$$
+
+# Problem 9 (2.2.1-2): solving unknowns between matrices
+
+\textbf{Gaussian elimination}: A generalized ``linear algebraic'' way of solving systems of equations.
+$$
+\begin{bmatrix}
+2 & 3 \\
+4 & 1
+\end{bmatrix} \cdot 
+\begin{bmatrix}
+x_1 \\
+x_2
+\end{bmatrix} = 
+\begin{bmatrix}
+1 \\
+17
+\end{bmatrix}
+\pause
+\quad\quad
+\begin{matrix}
+\ \\
+\sim \\
+\ 
+\end{matrix}
+\quad\quad
+\begin{matrix}
+2x_1 + 3x_2 = 1 \\
+4x_1 + x_2 = 17
+\end{matrix}
+$$
+
+\pause
+
+\underline{Step 1.} Write down an augmented matrix:
+  $$
+  [ \ \mathbf{A} \ | \ b \ ] = \left[
+    \begin{array}{cc|c}
+      2 & 3 & 1\\
+      4 & 1 & 17
+    \end{array}
+    \right]
+  $$
+\pause
+\underline{Step 2.} Reduce augmented matrix, if possible, until an upper triangular matrix appears on left-hand side (row echelon form), 
+$$
+\only<4>{
+  \left[
+    \begin{array}{cc|c}
+      U_{11} & U_{12} & b^{\prime}_1\\
+      0 & U_{22} & b^{\prime}_2
+    \end{array}
+    \right]
+}
+\only<5-6>{
+  \left[
+    \begin{array}{cc|c}
+      2 & 3 & 1 \\
+      4 & 1 & 17
+    \end{array}
+    \right]
+}
+\only<6>{
+\begin{matrix}
+\ \\
+\color{red}{+ (-2 \cdot \textnormal{row 1})}
+\end{matrix}
+}
+\only<7>{
+  \left[
+    \begin{array}{cc|c}
+      2 & 3 & 1 \\
+      4\color{red}{-4} & 1\color{red}{-6} & 17\color{red}{-2}
+    \end{array}
+    \right]
+}
+\only<8->{
+  \left[
+    \begin{array}{cc|c}
+      2 & 3 & 1 \\
+      0 & -5 & 15
+    \end{array}
+    \right]
+}
+$$ 
+via three row operations: (1) swapping rows, (2) multiplying a row by a real number, \only<1-5,7->{(3)}\only<6>{\color{red}{(3)}} adding multiple of one row to another.
+
+
+# Problem 9 (2.2.1-2): solving unknowns between matrices
+
+\underline{Step 4.} Extract solution for $x$, if it exists.
+\pause
+
+\textit{Option a}: In system of equations, start with most obvious solution, and keep substituting in to get others (back-substitution).
+\pause
+
+$$
+\only<3->{
+  \left[
+    \begin{array}{cc|c}
+      2 & 3 & 1 \\
+      0 & -5 & 15
+    \end{array}
+    \right]
+}
+\only<4->{
+\quad
+\begin{matrix}
+\ \\
+\sim \\
+\ 
+\end{matrix}
+\quad\quad
+}
+\only<4>{
+\begin{matrix}
+2x_1 + & 3x_2 = 1 \\
+& \color{red}{-5}x_2 = \color{red}{15}
+\end{matrix}
+}
+\only<5>{
+\begin{matrix}
+2x_1 + & 3x_2 = 1 \\
+& x_2 = -3
+\end{matrix}
+}
+\only<6>{
+\begin{matrix}
+2x_1 + & 3 \cdot \color{red}{-3} & = 1 \\
+& x_2 & = -3
+\end{matrix}
+}
+\only<7>{
+\begin{matrix}
+2x_1 & & = \color{red}{10} \\
+& x_2 & = -3
+\end{matrix}
+}
+\only<8>{
+\begin{matrix}
+x_1 & & = \color{red}{5} \\
+& x_2 & = -3
+\end{matrix}
+}
+\only<9->{
+\begin{matrix}
+x_1 & & = \textbf{5} \\
+& x_2 & = \textbf{-3}
+\end{matrix}
+}
+$$
+\only<9->{
+
+\textit{Option b}: Perform more row operations until the identity matrix appears on left-hand side (\textbf{Gauss-Jordan elimination}).
+}
+
+\only<10->{
+$$
+\only<10>{
+  \left[
+    \begin{array}{cc|c}
+      2 & 3 & 1 \\
+      0 & -5 & 15
+    \end{array}
+    \right]
+}
+\only<11>{
+  \left[
+    \begin{array}{cc|c}
+      2 & 3 & 1 \\
+      0 & -5 & 15
+    \end{array}
+    \right] 
+    \begin{matrix}
+     \ \\
+     \color{red}{ \cdot -1/5 }
+    \end{matrix}
+}
+\only<12>{
+  \left[
+    \begin{array}{cc|c}
+      2 & 3 & 1 \\
+      0 & 1 & -3
+    \end{array}
+    \right] 
+    \begin{matrix}
+     \color{red}{ + (-3 \cdot \textnormal{row 2}) } \\
+     \ 
+    \end{matrix}
+}
+\only<13>{
+  \left[
+    \begin{array}{cc|c}
+      2 & 0 & 10 \\
+      0 & 1 & -3
+    \end{array}
+    \right] 
+    \begin{matrix}
+     \color{red}{ \cdot 1/2 } \\
+     \ 
+    \end{matrix}
+}
+\only<14>{
+  \left[
+    \begin{array}{cc|c}
+      1 & 0 & \textbf{5} \\
+      0 & 1 & \textbf{-3}
+    \end{array}
+    \right]
+}
+$$
+}
+
+# Problem 9 (2.2.1-2): solving unknowns between matrices
+
+
+$$
+\bordermatrix{
+&\overbrace{}^\textnormal{public healthcare} 
+&\overbrace{}^\textnormal{military spending}\cr 
+\llap{${\scriptstyle \textnormal{Rashida}}\{$}& \color{blue}{2} & \color{red}{3}\cr 
+\llap{${\scriptstyle \textnormal{Jeb}}\{$}& \color{blue}{4} & \color{red}{1}\cr
+} \cdot 
+\begin{bmatrix} \color{blue}{\textbf{5}} \\ \color{red}{\textbf{-3}} \end{bmatrix} =
+\begin{bmatrix} 1 \\ 17 \end{bmatrix}
+$$
+
+\pause
+
+In either case, the solution $x$ tells us that: \pause
+\begin{itemize}
+\item support for public healthcare is a Democratic position $\rightsquigarrow$ increased support = increases Democratic affiliation by $\color{blue}{5}$
+\item support for military spending is a Republican position $\rightsquigarrow$ increased support = decreases Democratic affiliation by $\color{red}{-3}$
+\end{itemize}
+\pause
+
+In many cases, there are not enough ``independent'' columns or rows in $\mathbf{A}$ $\rightsquigarrow$ we fail \underline{Step 2} and cannot find exactly one solution (more this week).
+
+# Problem 11 (2.5.12): inverting matrices
+
+\pause
+Another method for solving $\mathbf{A}x = b$ would be eliminating $\mathbf{A}$ from the left-hand side of the equation completely via its **inverse**: 
+$$
+\begin{aligned}
+         & \mathbf{A}x & = b \\ \pause
+\implies & \mathbf{A}^{-1} \mathbf{A}x  & = \mathbf{A}^{-1}b \\ \pause
+\implies & x & = \mathbf{A}^{-1}b
+\end{aligned}
+$$
+\pause
+Noting that $\mathbf{A}^{-1}\mathbf{A} = \mathbf{A}\mathbf{A}^{-1}$, we can do this sort of elimination to create helpful formulas such as in Problem 11:
+$$
+\begin{aligned}
+         & \mathbf{C} & = & \mathbf{A}\mathbf{B} \\ \pause
+\implies & \mathbf{A}^{-1} \mathbf{C}  & = & \mathbf{A}^{-1}\mathbf{A}\mathbf{B} \\ \pause
+\implies & \mathbf{A}^{-1} \mathbf{C}\mathbf{C^{-1}} & = & \mathbf{B}\mathbf{C}^{-1} \\ \pause
+\implies & \mathbf{A}^{-1}  & = & \mathbf{B}\mathbf{C}^{-1}
+\end{aligned}
+$$
+
+# Problem 11 (2.5.12): inverting matrices
+
+If $\mathbf{A}^{-1}$ does not exist, $\mathbf{A}$ is called **singular**. How would we know $\mathbf{A}^{-1}$ singular? \pause
+
+* if there aren't enough independent rows or columns.
+* if the ``volume'' $\mathbf{A}$ takes up in space (determinant) is zero.
+* if there is more than one solution to the system $\mathbf{A}x = \mathbf{0}$.
+
+\pause
+Ok, so how exactly do you invert a non-singular matrix?
+
+# Problem 11 (2.5.12): inverting matrices
+
+All we have to do is to solve:
+$$
+\begin{bmatrix}
+2 & 3 \\
+4 & 1
+\end{bmatrix}
+\begin{bmatrix}
+a & b \\
+c & d
+\end{bmatrix} = 
+\begin{bmatrix}
+1 & 0 \\
+0 & 1
+\end{bmatrix}
+$$
+\pause We can split these into two systems and solve each via Gauss-Jordan elmination:
+$$
+\begin{bmatrix}
+2 & 3 \\
+4 & 1
+\end{bmatrix}
+\begin{bmatrix}
+a \\
+c
+\end{bmatrix} = 
+\begin{bmatrix}
+1 \\
+0
+\end{bmatrix}, \quad\quad
+\begin{bmatrix}
+2 & 3 \\
+4 & 1
+\end{bmatrix}
+\begin{bmatrix}
+b \\
+d
+\end{bmatrix} = 
+\begin{bmatrix}
+0 \\
+1
+\end{bmatrix}
+$$
+$$
+\downarrow \qquad\qquad\qquad\qquad\qquad \downarrow
+$$
+$$
+\left[
+    \begin{array}{cc|c}
+      2 & 3 & 1 \\
+      4 & 1 & 0
+    \end{array}
+\right], \quad\quad
+\left[
+    \begin{array}{cc|c}
+      2 & 3 & 0 \\
+      4 & 1 & 1
+    \end{array}
+\right]
+$$
+\pause But, it turns out performing row reduction separately is the same as performing row reduction on the joint augmented matrix $\smiley$:
+$$
+\only<3>{
+\left[
+    \begin{array}{cc|cc}
+      2 & 3 & 1 & 0 \\
+      4 & 1 & 0 & 1
+    \end{array}
+\right]
+}
+\only<4>{
+\left[
+    \begin{array}{cc|cc}
+      2 & 3 & 1 & 0 \\
+      4\color{red}{-4} & 1\color{red}{-6} & 0\color{red}{-2} & 1
+    \end{array}
+\right] \begin{matrix} \ \\ \color{red}{ + (-2 \cdot \textnormal{row 1}) }  \end{matrix}
+}
+\only<5>{
+\left[
+    \begin{array}{cc|cc}
+      2 & 3 & 1 & 0 \\
+      0 & -5 & -2 & 1
+    \end{array}
+\right]
+}
+\only<6>{
+\left[
+    \begin{array}{cc|cc}
+      2 & 3 & 1 & 0 \\
+      0 & \color{red}{1} & \color{red}{2/5} & \color{red}{-1/5}
+    \end{array}
+\right] \begin{matrix} \ \\ \color{red}{ \cdot - 1/5 }  \end{matrix}
+}
+\only<7>{
+\left[
+    \begin{array}{cc|cc}
+      2 & 3 & 1 & 0 \\
+      0 & 1 & 2/5 & -1/5
+    \end{array}
+\right]
+}
+\only<8>{
+\left[
+    \begin{array}{cc|cc}
+      2 & 3\color{red}{-3} & 1\color{red}{-6/5} & 0\color{red}{+3/5} \\
+      0 & 1 & 2/5 & -1/5
+    \end{array}
+\right] \begin{matrix} \color{red}{ + (-3 \cdot \textnormal{row 2}) } \\ \ \end{matrix}
+}
+\only<9>{
+\left[
+    \begin{array}{cc|cc}
+      2 & 0 & -1/5 & 3/5 \\
+      0 & 1 & 2/5 & -1/5
+    \end{array}
+\right]
+}
+\only<10>{
+\left[
+    \begin{array}{cc|cc}
+      \color{red}{1} & 0 & \color{red}{-1/10} & \color{red}{3/10} \\
+      0 & 1 & 2/5 & -1/5
+    \end{array}
+\right] \begin{matrix} \color{red}{ \cdot 1/2 } \\ \ \end{matrix}
+}
+\only<11>{
+\left[
+    \begin{array}{cc|cc}
+      1 & 0 & \textbf{-0.1} & \textbf{0.3} \\
+      0 & 1 & \textbf{0.4} & \textbf{-0.2}
+    \end{array}
+\right]
+}
+$$
+
+# Problem 11 (2.5.12): inverting matrices
+
+We can verify this in \texttt{R}:
+```{r}
+A <- matrix(c(2,4,3,1), ncol=2, nrow=2)
+solve(A)
+```
+
+
+# This Week
+
+Suggested concepts to focus on:
+
+* Space and subspace
+  - column space
+  - row space
+  - nullspace
+* Linear independence
+  - rank
+  - basis
+  
+\textbf{Questions?}
+  
