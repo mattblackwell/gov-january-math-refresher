@@ -43,7 +43,7 @@ We will use the Ed platform for a message board and place to post course materia
 
 - Topics: Vector spaces, rank, independence, basis
 - Reading: Strang Ch. 3 
-  - NB: In Section 3.2 you can skim the mechanics of echeleon forms. the defintion of nullspaces and rank are what are important. Skim Section 3.3 for our purposes; most important to understand the summary on p. 155.
+  - NB: In Section 3.2 you can skim the mechanics of echeleon forms. The defintion of nullspaces and rank are what are important. Skim Section 3.3 for our purposes; most important to understand the summary on p. 155.
 - 3Blue1Brown Videos: 
   - Review [Chapter 2](https://youtu.be/k7RM-ot2NWY)
   - [Chapter 6: The determinant](https://youtu.be/Ip3X9LOh2dk) (We won't use the Strang chapter on the determinant because it is too technical and focused on computation, but this video does a nice job giving the intuition of the determinant.)
