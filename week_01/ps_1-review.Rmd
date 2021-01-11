@@ -128,7 +128,6 @@ Let's visualize this in our example space.
 \uncover<4-5>{
 \node[draw, text width = 6cm] at (3.25, -3) (dot2) {Intuitively, the dot product tells us how strongly $w$ and $v$ \underline{co-vary}$^{\textnormal{\textdagger}}$.};
 \node[text width = 5cm] at (-2.5, -3.25) (dot2) {$^{\textnormal{\textdagger}}$Roughly, but not exactly the \textit{sample covariance}; see end of slides for the difference.};
-
 }
 \uncover<5-5>{
 \node[draw, text width = 6cm] at (3.25, -4.5) (dot3) {Geometrically, the dot product can be defined as how strongly $w$ \underline{projects} onto $v$.};
@@ -679,7 +678,9 @@ c & d
 0 & 1
 \end{bmatrix}
 $$
+
 \pause We can split these into two systems and solve each via Gauss-Jordan elimination:
+
 $$
 \begin{bmatrix}
 2 & 3 \\
