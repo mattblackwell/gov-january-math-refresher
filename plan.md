@@ -38,6 +38,8 @@ We will use the Ed platform for a message board and place to post course materia
   - [Lecture 4: Factorization into A = LU](http://www.youtube.com/watch?v=5hO3MrzPa0A)
   - [Lecture 5: Transposes, Permutation, Spaces R^n](http://www.youtube.com/watch?v=JibVXBElKL0)
 - Exercises: [Week 1](https://github.com/mattblackwell/gov-january-math-refresher/raw/main/week_01/ps_1.pdf)
+- Solutions: [Week 1](https://github.com/mattblackwell/gov-january-math-refresher/raw/main/week_01/ps_1-solutions.pdf)
+- Review Slides: [Week 1](https://github.com/mattblackwell/gov-january-math-refresher/raw/main/week_01/ps_1-review.pdf)
 
 ## Week 2 (January 11th)
 
