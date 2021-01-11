@@ -652,7 +652,7 @@ $$
 
 # Problem 11 (2.5.12): inverting matrices
 
-If $\mathbf{A}^{-1}$ does not exist, $\mathbf{A}$ is called **singular**. How would we know $\mathbf{A}^{-1}$ singular? \pause
+If $\mathbf{A}^{-1}$ does not exist, $\mathbf{A}$ is called **singular**. How would we know $\mathbf{A}$ is singular? \pause
 
 * if there aren't enough independent rows or columns.
 * if the ``volume'' $\mathbf{A}$ takes up in space (determinant) is zero.
