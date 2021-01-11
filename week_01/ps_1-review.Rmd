@@ -126,7 +126,9 @@ Let's visualize this in our example space.
 \node[text width=5cm, color=red] at (2.5, -0.25) (dot) { $|v \cdot w| = |v_1 \cdot w_1 + v_2 \cdot w_2| = \mathbf{10}$ };
 }
 \uncover<4-5>{
-\node[draw, text width = 6cm] at (3.25, -3) (dot2) {Intuitively, the dot product tells us how strongly $w$ and $v$ \underline{co-vary}.};
+\node[draw, text width = 6cm] at (3.25, -3) (dot2) {Intuitively, the dot product tells us how strongly $w$ and $v$ \underline{co-vary}$^{\textnormal{\textdagger}}$.};
+\node[text width = 5cm] at (-2.5, -3.25) (dot2) {$^{\textnormal{\textdagger}}$Roughly, but not exactly the \textit{sample covariance}; see end of slides for the difference.};
+
 }
 \uncover<5-5>{
 \node[draw, text width = 6cm] at (3.25, -4.5) (dot3) {Geometrically, the dot product can be defined as how strongly $w$ \underline{projects} onto $v$.};
@@ -677,7 +679,7 @@ c & d
 0 & 1
 \end{bmatrix}
 $$
-\pause We can split these into two systems and solve each via Gauss-Jordan elmination:
+\pause We can split these into two systems and solve each via Gauss-Jordan elimination:
 $$
 \begin{bmatrix}
 2 & 3 \\
@@ -805,8 +807,21 @@ A <- matrix(c(2,4,3,1), ncol=2, nrow=2)
 solve(A)
 ```
 
+# Important Takeaways
 
-# This Week
+1. A vector's length captures its' magnitude
+    - ex: intensity of a voter's public opinion on select issues
+2. The dot product between two vectors roughly captures their covariance
+    - ex: how well-aligned (positive or negative) two voters' public opinions are
+3. A matrix (a convenient way of collecting vectors) can be interpreted as a transformation on a (known or unknown) vector
+    - ex: scaling voters' public opinions according to party positions
+4. Matrix multiplication is just a bunch of vector dot products
+5. Solving for unknown vectors (e.g. system of equations) or matrices (e.g. inversion) can be done via row reduction
+6. Order of operations matters in linear algebra!
+    - Triangle and Schwarz Inequality broadly tells us that combination of parts is usually greater than their whole
+    - Cancellations in Problem 11 only work if we multiply $\mathbf{C}^{-1}$ to right-hand side
+
+# This Coming Week
 
 Suggested concepts to focus on:
 
@@ -819,4 +834,18 @@ Suggested concepts to focus on:
   - basis
   
 \textbf{Questions?}
-  
+
+# Appendix: Covariance and Dot Product
+
+The \textbf{sample covariance} between two vectors $v = [4,3]$ and $w = [1,2]$ is:
+$$
+S_{v,w} = (v_1 - \overline{v}) \cdot (w_1 - \overline{w}) + (v_2 - \overline{v}) \cdot (w_2 - \overline{w})
+$$
+where $\overline{v}$ and $\overline{w}$ are the averages across all entries in each vector respectively. More generally for generic vectors $x,y$ in some $d$-dimensional space:
+$$
+S_{x,y} = \frac{1}{d-1}\sum_{j=1}^{d}(x_{j} - \overline{x}) \cdot (y_j - \overline{y})
+$$
+$\rightsquigarrow$ same as taking the \textbf{dot product} of the \underline{de-meaned} (or centered) vectors,
+$x - \overline{x}$ and $y - \overline{y}$ and dividing by $\frac{1}{d-1}$, so they measure $\approx$ same thing.
+
+\color{red}{However, sample covariance implies that $v$ and $w$ are observations of random variables (which have \textbf{covariances}), whereas dot product applies to \textit{any} two vectors $\rightsquigarrow$ we'll return to covariance of random variables in Gov 2002! }

@@ -1,0 +1,202 @@
+---
+title: Week 1 Exercise Solutions
+author: Gov January Linear Algebra Review
+date: 2021-01-04
+output: tint::tintPdf
+header-includes:
+  - \usepackage{bm}
+  - \usepackage{mathtools}
+---
+
+1. (Strang 1.1.4) From the vectors, \(\bm{v} = \begin{bmatrix}2\\1\end{bmatrix}\) and \(\bm{w} = \begin{bmatrix}1\\2\end{bmatrix}\), find the components of $3\bm{v} + \bm{w}$ and $c\bm{v} + d\bm{w}$. 
+
+\textcolor{red}{$3v+w=(7,5)$ and $cv+dw=(2c+d,c+2d)$.}
+
+2. (Strang 1.2.1) Calculate the dot products $\bm{u \cdot v}$ and $\bm{u \cdot w}$ and $\bm{u \cdot}(\bm{v} + \bm{w})$ and $\bm{w\cdot v}$: 
+\[
+\bm{u} = \begin{bmatrix*}[r] -0.6 \\ 0.8\end{bmatrix*} \qquad
+\bm{v} = \begin{bmatrix} 4 \\ 3\end{bmatrix} \qquad
+\bm{w} = \begin{bmatrix} 1 \\ 2\end{bmatrix}
+\]
+
+\textcolor{red}{$u \cdot v = -2.4+2.4 = 0$,\\ $u \cdot w= -.6 + 1.6 = 1$, \\ $u \cdot (v+w)=u  \cdot  v+u  \cdot w= 0 + 1$,\\ $w \cdot v = 4 - 6 = -2 = v \cdot w$.}
+
+
+3. (Strang 1.2.2) Compute the lengths \(\Vert\bm{u}\Vert\), \(\Vert\bm{v}\Vert\), and \(\Vert\bm{w}\Vert\) of the vectors in the last problem. Check the Schwarz inequalities $|\bm{u\cdot v}| \leq \Vert\bm{u}\Vert\Vert\bm{v}\Vert$ and  $|\bm{v\cdot w}| \leq \Vert\bm{v}\Vert\Vert\bm{w}\Vert$. 
+
+\textcolor{red}{
+$||u||=1$ and $||v||=5$ and $||w||=\sqrt{5}$. Then $|u \cdot v|=0<(1)(5)$ and $|v\cdot w|=10 < 5\sqrt{5}$, confirming the Schwarz inequality.
+}
+
+4. (Strang 1.2.19 and 1.2.21) There are two equivalent ways to write the triangle inequality:
+\[
+\Vert\bm{v} + \bm{w}\Vert^2 \leq \left( \Vert\bm{v}\Vert + \Vert\bm{w}\Vert \right)^2 \qquad \iff \qquad  \Vert\bm{v} + \bm{w}\Vert \leq \Vert\bm{v}\Vert + \Vert\bm{w}\Vert
+\]
+Use the Schwarz inequality to prove the first of these two inequalities. Hint: use these facts about dot products: $\bm{v \cdot w}=\bm{w\cdot v}$ and $\bm{u \cdot}(\bm{v} + \bm{w}) = \bm{u\cdot v} + \bm{u\cdot w}$. 
+
+\color{red}
+First, recall that $||a||^2 = (a \cdot a)^2$.
+
+Let's look at $||v + w||^2 = ((v + w) \cdot (v + w))$. Note that the following equality holds if we use the given rules in the right way (1.2.19):
+$$
+\begin{aligned}
+(v + w) \cdot (v + w) & = (v + w) \cdot v + (v + w) \cdot w  & \textnormal{(fact 2)}\\
+& = v \cdot (v + w) + w \cdot (v + w) & \textnormal{(fact 1)}\\
+& = v\cdot v + v \cdot w + w \cdot v + w \cdot w & \textnormal{(fact 1)}\\
+& = v\cdot v + 2 v \cdot w + w\cdot w & \textnormal{(fact 2)}\\
+& = ||v||^2 + 2 v \cdot w + ||w||^2 & \textnormal{(definition of length)}\\
+\end{aligned}
+$$
+
+Now, let's take for given the Triangle inequality which says that $2v \cdot w \leq 2||v|| \cdot ||w||$ (technically there's an absolute value on the left, but if it's negative, the inequality *definitely* holds true!). We can apply this to the middle term in the right hand side of the above equality to get the answer:
+$$
+\begin{aligned}
+||v + w||^2 & = (v + w) \cdot (v + w) \\
+& = ||v||^2 + 2 v \cdot w + ||w||^2 \\
+& \leq  ||v||^2 + 2(||v||\cdot ||w||) + ||w||^2 & \textnormal{(Triangle Ineq.)} \\
+& = (||v|| + ||w||)^2 & \textnormal{(quadratic factorization)}
+\end{aligned}
+$$
+
+\color{black}
+
+5. (Strang 1.2.29) If $\Vert\bm{v}\Vert = 5$ and $\Vert\bm{w}\Vert = 3$, what are the smallest and largest possible values of $\Vert \bm{v} - \bm{w}\Vert$? What are the smallest and largest possible values of $\bm{v\cdot w}$?
+
+\color{red}
+
+For a specific example, pick $v = (1, 2, -3)$ and then $w = (-3, 1, 2)$. In this example, using the \textbf{cosine of angle} rule on p. 18, $\cos \theta = v \cdot w/(||v|| \cdot ||w||) = -7/\sqrt{14}\sqrt{14} = -1/2$ and $\theta = 120^{\circ}$ . This always happens when $x + y + z = 0$:
+$$
+v \cdot w = xz + xy + yz = \frac{1}{2}(x + y + z)^2 - \frac{1}{2}(x^2 + y^2 + z^2)
+$$
+This is the same as $v \cdot w = 0 - \frac{1}{2}||v|| \cdot ||w||$. Then $\cos \theta = \frac{1}{2}$.
+
+\color{black}
+
+6. (Strang 2.1.9) Compute each $A\bm{x}$ by dot products of the rows with the column vector:
+\[
+\textrm{(a)}
+\begin{bmatrix*}[r]
+  1 & 2 & 4 \\
+  -2 & 3 & 1 \\
+  -4 & 1 & 2
+\end{bmatrix*}
+\begin{bmatrix}
+  2 \\ 2 \\ 3
+\end{bmatrix}
+\qquad
+\textrm{(b)}
+\begin{bmatrix*}
+  2 & 1 & 0 & 0 \\
+  1 & 2 & 1 & 0 \\
+  0 & 1 & 2 & 1 \\
+  0 & 0 & 1 & 2 
+\end{bmatrix*}
+\begin{bmatrix}
+  1 \\ 1\\ 1\\ 2
+\end{bmatrix}
+\]
+
+\color{red}
+
+(a) $Ax = (18,5,0)$
+
+(b) $Ax = (3,4,5,5)$
+
+\color{black}
+
+7. (Strang 2.1.10) Compute each  $A\bm{x}$ from the previous question as a combination of the columns of $A$. 
+
+\color{red}
+
+Multiplying as linear combinations of the columns gives the same $Ax=(18,5,0)$ and $(3, 4, 5, 5)$. By rows or by columns: $9$ separate multiplications when $A$ is $3$ by $3$.
+
+\color{black}
+
+8. (Strang 2.2.1-2) Use elimination to solve the following system of linear equations:
+\[
+\begin{aligned}
+  2x & +  3y = 1, \\
+  10x & + 9y = 11.  
+\end{aligned}
+\]
+If the right side changed to $(4, 44)$ what would the answer be?
+
+\color{red}
+
+Multiply row 1 by $5$ and subtract from row 2 to get row 1 of the augmented matrix as $[1 \ | \ 6]$. The pivots to circle are 2 and -6. And the solution is $(2, -1)$. 
+
+Multiplying the RHS by $4$ would multiply the solution also by $4$ to produce $(8, -4)$.
+
+\color{black}
+
+9. (Strang 2.3.24) Apply elimination to the 2 by 3 augmented matrix $[A\quad \bm{b}]$. What is the triangular system $U\bm{x} = \bm{c}$? What is the solution $\bm{x}$?
+\[
+A\bm{x} =
+\begin{bmatrix}
+  2 & 3 \\ 4 & 1 
+\end{bmatrix}
+\begin{bmatrix}
+  x_1 \\ x_2
+\end{bmatrix}
+=
+\begin{bmatrix}
+  1 \\ 17
+\end{bmatrix}.
+\]
+
+\color{red}
+
+The upper triangular matrix is
+$$
+\begin{bmatrix}
+2 & 3 & | \quad \ \ 1 \\
+0 & -5 &| \quad 15
+\end{bmatrix}
+$$
+We can either further reduce or perform back substition to get $x_1 = 5$ and $x_2 = -3$.
+
+\color{black}
+
+10. (Strang 2.4.1) Let $A$ be 3 by 5, $B$ be 5 by 3, $C$ be 5 by 1, and $D$ be 3 by 1. All entries of all of these matrices are 1. Which of the following matrix operations are allowed, and what are the results?
+\[
+BA \qquad AB \qquad ABD \qquad DC \qquad A(B+C)
+\]
+
+\color{red}
+
+$BA$ is $5 \times 5$. $AB$ is $3 \times 3$. $ABD$ is $3 \times 1$. $DC$ and $A(B+C)$ are not defined.
+
+\color{black}
+
+11. (Strang 2.5.12) If the product $C = AB$ is invertible ($A$ and $B$ are square), then $A$ itself is invertible. Find a formula for $A^{-1}$ that involves $C^{-1}$ and $B$.
+
+\color{red}
+
+$A^{-1} = BC^{-1}$ (see review slides for steps).
+
+\color{black}
+
+12. (Strang 2.5.13) If the product $M = ABC$ of three square matrices is invertible, then $B$ is invertible. (So are $A$ and $C$.) Find a formula for $B^{-1}$ that involves $M^{-1}$ and $A$ and $C$.
+
+\color{red}
+
+$M^{-1} = C^{-1}B^{-1}A^{-1}$ so multiply the left by $C$ and the right by $A$. We get $B^{-1} = CM^{-1}A$.
+
+\color{black}
+
+13. (Strang 2.7.39, Challenge) Suppose $Q^{T}$ equals $Q^{-1}$ (transpose equals inverse, so $Q^{T}Q = I$). 
+  (a) Show that the columns $\bm{q}_1, \ldots, \bm{q}_n$ are the unit vectors: $\Vert \bm{q}_i\Vert^2 = 1$. 
+  (b) Show that every two different columns of $Q$ are perpendicular: $\bm{q}_1^{T}\bm{q}_2 = 0$. 
+
+\color{red}
+
+Start from $Q^{T}Q = I$ as in $\begin{bmatrix} q_1^{T} \\ q_2^{T} \end{bmatrix} \cdot \begin{bmatrix} q_1 & q_2 \end{bmatrix} = \begin{bmatrix} 1 & 0 \\ 0 & 1 \end{bmatrix}$.
+
+(a) The diagonal entries give $q_1^{T}q_2 = 1$ and $q_2^{T} q_2 = 1$ (unit vectors).
+
+(b) The off-diagonal entry is $q_1^{T}q_2 = 0$ (and in general $q_i^{T} q_j = 0$)
+
+(c) The leading example for $Q$ is the rotation matrix $\begin{bmatrix} \cos \theta & -\sin \theta \\ \sin \theta & \cos \theta \end{bmatrix}$.
+
+\color{black}
+
