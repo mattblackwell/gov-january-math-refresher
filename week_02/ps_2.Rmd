@@ -1,0 +1,49 @@
+---
+title: Week 2 Exercises
+author: Gov January Linear Algebra Review
+date: 2021-01-11
+output: tint::tintPdf
+header-includes:
+  - \usepackage{bm}
+  - \usepackage{mathtools}
+---
+
+
+1. (Strang 3.1.19) Describe the column spaces (lines or planes) of these particular matrices:
+
+\[
+A = \begin{bmatrix} 1 & 2 \\ 0 & 0 \\ 0 & 0 \end{bmatrix} \quad \text{ and } \quad
+B = \begin{bmatrix} 1 & 0 \\ 0 & 2 \\ 0 & 0 \end{bmatrix} \quad \text{ and } \quad
+C = \begin{bmatrix} 1 & 0 \\ 2 & 0 \\ 0 & 0 \end{bmatrix}
+\]
+
+2. (Strang 3.1.23) If we add an extra column \(\bm{b}\) to a matrix \(A\), then the column space gets larger unless \underline{\phantom{this is some space}}. Give an example where the column space gets larger and an example where it doesn't. Why is \(A\bm{x} = \bm{b}\) solvable exactly when the column space *doesn't* get larger---it is the same for \(A\) and \([A\;\;\bm{b}]\).
+
+3. (Strang 3.2.22) If \(AB = 0\) then the column space of \(B\) is contained in the \underline{\phantom{hello there}} of \(A\). Why?
+
+4. (Strang 3.2.39) Fill out these matrices so that they have rank 1:
+
+\[
+A = \begin{bmatrix} 1 & 2 & 4 \\ 2 &  & \\ 4 &  &  \end{bmatrix} \quad \text{ and } \quad
+B = \begin{bmatrix} & 9 &  \\ 1 & & \\ 2 & 6 & -3 \end{bmatrix} \quad \text{ and } \quad
+M = \begin{bmatrix} a & b \\ c &   \end{bmatrix}
+\]
+
+5. (Strang 3.3.19) Find the rank of \(A\) and also the rank of \(A^{T}A\) and also the rank of \(AA^{T}\):
+
+\[
+A = \begin{bmatrix} 1 & 1 & 5 \\ 1 & 0 & 1\end{bmatrix} \quad \text{and} \quad
+A = \begin{bmatrix} 2 & 0 \\ 1 & 1 \\ 1 & 2 \end{bmatrix}
+\]
+
+6. (Strang 3.4.2) Find the largest possible number of independent vectors among:
+\[
+\bm{v}_1 = \begin{bmatrix} 1 \\ -1\\ 0 \\ 0 \end{bmatrix}
+\bm{v}_2 = \begin{bmatrix} 1 \\ 0 \\ -1 \\ 0 \end{bmatrix}
+\bm{v}_3 = \begin{bmatrix} 1 \\ 0 \\ 0 \\ -1 \end{bmatrix}
+\bm{v}_4 = \begin{bmatrix}  0  \\ 1 \\ -1\\ 0 \end{bmatrix}
+\bm{v}_5 = \begin{bmatrix}  0  \\ 1 \\ 0 \\ -1 \end{bmatrix}
+\bm{v}_5 = \begin{bmatrix}  0  \\ 0 \\ 1 \\ -1 \end{bmatrix}
+\]
+
+7. (Strang 3.4.7) If \(\bm{w}_1, \bm{w}_2, \bm{w}_3\) are independent vectors, show that the differences \(\bm{v}_1 = \bm{w}_2 - \bm{w}_3\) and \(\bm{v}_2 = \bm{w}_1 - \bm{w}_3\) and \(\bm{v}_3 = \bm{w}_1 - \bm{w}_2\) are *dependent*. Find a combination of the \(\bm{v}\)'s that gives zero. 
