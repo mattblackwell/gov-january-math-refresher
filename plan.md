@@ -57,6 +57,7 @@ We will use the Ed platform for a message board and place to post course materia
   - [Lecture 8: Solving Ax = b](http://www.youtube.com/watch?v=9Q1q7s1jTzU)
   - [Lecture 9: Independence, Basis, and Dimension](http://www.youtube.com/watch?v=yjBerM5jWsc)
   - [Lecture 10: The Four Fundamental Subspaces](http://www.youtube.com/watch?v=nHlE7EgJFds)
+- Exercises: [Week 2](https://github.com/mattblackwell/gov-january-math-refresher/raw/main/week_02/ps_2.pdf)
 
 ## Week 3 (January 18th)
 
