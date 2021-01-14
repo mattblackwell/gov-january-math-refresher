@@ -6,6 +6,13 @@ output: tint::tintPdf
 header-includes:
   - \usepackage{bm}
   - \usepackage{mathtools}
+  - \usepackage{tikz}
+  - \usepackage{amsmath}
+  - \usepackage{wasysym}
+  - \usetikzlibrary{calc}
+  - \usetikzlibrary{angles}
+  - \usetikzlibrary{patterns}
+  - \usetikzlibrary{quotes}
 ---
 
 1. (Strang 1.1.4) From the vectors, \(\bm{v} = \begin{bmatrix}2\\1\end{bmatrix}\) and \(\bm{w} = \begin{bmatrix}1\\2\end{bmatrix}\), find the components of $3\bm{v} + \bm{w}$ and $c\bm{v} + d\bm{w}$. 
@@ -64,11 +71,61 @@ $$
 
 \color{red}
 
-For a specific example, pick $v = (1, 2, -3)$ and then $w = (-3, 1, 2)$. In this example, using the \textbf{cosine of angle} rule on p. 18, $\cos \theta = v \cdot w/(||v|| \cdot ||w||) = -7/\sqrt{14}\sqrt{14} = -1/2$ and $\theta = 120^{\circ}$ . This always happens when $x + y + z = 0$:
-$$
-v \cdot w = xz + xy + yz = \frac{1}{2}(x + y + z)^2 - \frac{1}{2}(x^2 + y^2 + z^2)
-$$
-This is the same as $v \cdot w = 0 - \frac{1}{2}||v|| \cdot ||w||$. Then $\cos \theta = \frac{1}{2}$.
+Part 1: If $v, w \in \mathbb{R}^{2}$, then geometrically we know the following:
+
+\scalebox{0.4}{
+\begin{tikzpicture}
+<!-- grid -->
+\draw[help lines, color=gray!30, dashed] (-4.9,-4.9) grid (4.9,4.9);
+<!-- axes -->
+\begin{scope}[transparency group, opacity=0.8]
+\draw[->,ultra thick] (-5,0)--(5,0);
+\draw[->,ultra thick] (0,-5)--(0,5);
+\end{scope}
+\draw[red, dashed, thick] (0,0) circle (3 cm);
+\draw[red, dashed, thick] (0,0) circle (5 cm);
+\node[text width = 5cm] at (0.5, 3.3) {\Huge possible $w$'s};
+\node[text width = 5cm] at (0.5, 5.3) {\Huge possible $v$'s};
+\end{tikzpicture}
+}
+
+The farthest $v$ and $w$ could be away from each other is $8$: we could achieve this if $v$ and $w$ were perfectly negatively aligned, say, at $(0, 5)$ and $(0, -3)$:
+
+\scalebox{0.4}{
+\begin{tikzpicture}
+<!-- grid -->
+\draw[help lines, color=gray!30, dashed] (-4.9,-4.9) grid (4.9,4.9);
+<!-- axes -->
+\begin{scope}[transparency group, opacity=0.8]
+\draw[->,ultra thick] (-5,0)--(5,0);
+\draw[->,ultra thick] (0,-5)--(0,5);
+\end{scope}
+\draw[red, dashed, thick] (0,0) circle (3 cm);
+\draw[red, dashed, thick] (0,0) circle (5 cm);
+\draw[->,ultra thick,blue] (0,0)--(0,-3) node[below]{\Huge $w$};
+\draw[->,ultra thick,blue] (0,0)--(0,5) node[above]{\Huge $v$};
+\end{tikzpicture}
+}
+
+Incidentally, the \textbf{Triangle inequality} also gives us this bound. The closest would be if they were perfectly positive aligned, say, at $(0, 5)$ and $(0, 3)$:
+
+\scalebox{0.4}{
+\begin{tikzpicture}
+<!-- grid -->
+\draw[help lines, color=gray!30, dashed] (-4.9,-4.9) grid (4.9,4.9);
+<!-- axes -->
+\begin{scope}[transparency group, opacity=0.8]
+\draw[->,ultra thick] (-5,0)--(5,0);
+\draw[->,ultra thick] (0,-5)--(0,5);
+\end{scope}
+\draw[red, dashed, thick] (0,0) circle (3 cm);
+\draw[red, dashed, thick] (0,0) circle (5 cm);
+\draw[->,ultra thick,blue] (0,0)--(0,3) node[above]{\Huge $w$};
+\draw[->,ultra thick,blue] (0,0)--(0,5) node[above]{\Huge $v$};
+\end{tikzpicture}
+}
+
+\noindent Part 2: Using the \textbf{cosine of angle} rule on p. 18, we know that $\cos \theta = \frac{v \cdot w}{(||v|| \cdot ||w||)} = \frac{v \cdot w }{15}$. The cosine of $\theta$ (the angle between $v$ and $w$) is at most $1$ (when they are perfectly positively aligned) and at least $-1$ (when they are perfectly negatively aligned). So the bounds for $v \cdot w$ are $15$ (which we also know from the \textbf{Schwarz Inequality}) and $-15$.
 
 \color{black}
 
@@ -192,7 +249,7 @@ $M^{-1} = C^{-1}B^{-1}A^{-1}$ so multiply the left by $C$ and the right by $A$. 
 
 Start from $Q^{T}Q = I$ as in $\begin{bmatrix} q_1^{T} \\ q_2^{T} \end{bmatrix} \cdot \begin{bmatrix} q_1 & q_2 \end{bmatrix} = \begin{bmatrix} 1 & 0 \\ 0 & 1 \end{bmatrix}$.
 
-(a) The diagonal entries give $q_1^{T}q_2 = 1$ and $q_2^{T} q_2 = 1$ (unit vectors).
+(a) The diagonal entries give $q_1^{T}q_1 = 1$ and $q_2^{T} q_2 = 1$ (unit vectors).
 
 (b) The off-diagonal entry is $q_1^{T}q_2 = 0$ (and in general $q_i^{T} q_j = 0$)
 
