@@ -70,6 +70,7 @@ We will use the Ed platform for a message board and place to post course materia
   - [Lecture 15: Projections onto Subspaces](http://www.youtube.com/watch?v=Y_Ac6KiQ1t0)
   - [Lecture 16: Projection Matrices and Least Squares](http://www.youtube.com/watch?v=osh80YCg_GM)
   - [Lecture 17: Orthogonal Matrices and Gram-Schmidt](http://www.youtube.com/watch?v=uNsCkP9mgRk)
+- Exercises: [Week 3](https://github.com/mattblackwell/gov-january-math-refresher/raw/main/week_03/ps_3.pdf)
 
 ## Extra material
 
