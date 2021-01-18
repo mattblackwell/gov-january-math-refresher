@@ -1,0 +1,22 @@
+---
+title: Week 3 Exercises
+author: Gov January Linear Algebra Review
+date: 2021-01-19
+output: tint::tintPdf
+header-includes:
+  - \usepackage{bm}
+  - \usepackage{mathtools}
+---
+
+
+1. (Strang 4.1.13) Put bases for the subspaces $\bm{V}$ and $\bm{W}$ into the columns of the matrices $V$ and $W$. Explain why the test for orthogonal subspaces can be written $V^{T}W =$ zero matrix. This matches $\bm{v}^{T}\bm{w} = 0$ for orthogonal vectors. 
+
+2. (Strang 4.1.25) Find $A^{T}A$ if the columns of $A$ are unit vectors, all mutually perpendicular. 
+
+3. (Strang 4.2.13) Suppose $A$ is the 4 by 4 identity matrix with its last column removed. $A$ is 4 by 3. Project $\bm{b} = (1,2,3,4)$ onto the column space $A$. What shape is the projection matrix $P$ and what is $P$?
+
+4. (Strang 4.2.21) Multiply the matrix $P = A(A^{T}A)^{-1}A^{T}$ by itself. Cancel to prove that $P^2=P$. Explain by $P(P\bm{b})$ always equals $P\bm{b}$. The vector $P\bm{b}$ is in the column space of $A$ so its projection onto that column space is \underline{\phantom{hello there}}.
+
+5. (Strang 4.2.22) Prove that $P = A(A^{T}A)^{-1}A^{T}$ is symmetric by computing $P^{T}$. Remember that the inverse of a symmetric matrix is symmetric. 
+
+6. (Strang 4.2.23) Is the error vector $\bm{e}$ orthogonal to $\bm{b}$ or $\bm{p}$ or $\bm{e}$ or $\widehat{\bm{x}}$? Show that $\Vert \bm{e} \Vert^2$ equals $\bm{e}^{T}\bm{b}$ which equals $\bm{b}^T\bm{b} - \bm{p}^T\bm{b}$. 
