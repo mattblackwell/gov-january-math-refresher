@@ -42,15 +42,12 @@ $||u||=1$ and $||v||=5$ and $||w||=\sqrt{5}$. Then $|u \cdot v|=0<(1)(5)$ and $|
 Use the Schwarz inequality to prove the first of these two inequalities. Hint: use these facts about dot products: $\bm{v \cdot w}=\bm{w\cdot v}$ and $\bm{u \cdot}(\bm{v} + \bm{w}) = \bm{u\cdot v} + \bm{u\cdot w}$. 
 
 \color{red}
-First, recall that $||a||^2 = (a \cdot a)^2$.
+First, recall that $||a|| = (a \cdot a)^2$.
 
 Let's look at $||v + w||^2 = ((v + w) \cdot (v + w))$. Note that the following equality holds if we use the given rules in the right way (1.2.19):
 $$
 \begin{aligned}
-(v + w) \cdot (v + w) & = (v + w) \cdot v + (v + w) \cdot w  & \textnormal{(fact 2)}\\
-& = v \cdot (v + w) + w \cdot (v + w) & \textnormal{(fact 1)}\\
-& = v\cdot v + v \cdot w + w \cdot v + w \cdot w & \textnormal{(fact 1)}\\
-& = v\cdot v + 2 v \cdot w + w\cdot w & \textnormal{(fact 2)}\\
+(v + w) \cdot (v + w) & = v\cdot v + 2 v \cdot w + w\cdot w & \textnormal{(fact 2)}\\
 & = ||v||^2 + 2 v \cdot w + ||w||^2 & \textnormal{(definition of length)}\\
 \end{aligned}
 $$
@@ -60,7 +57,7 @@ $$
 \begin{aligned}
 ||v + w||^2 & = (v + w) \cdot (v + w) \\
 & = ||v||^2 + 2 v \cdot w + ||w||^2 \\
-& \leq  ||v||^2 + 2(||v||\cdot ||w||) + ||w||^2 & \textnormal{(Triangle Ineq.)} \\
+& \leq  ||v||^2 + 2(||v||\cdot ||w||) + ||w||^2 & \textnormal{(Schwarz Ineq.)} \\
 & = (||v|| + ||w||)^2 & \textnormal{(quadratic factorization)}
 \end{aligned}
 $$
