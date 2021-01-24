@@ -1,0 +1,157 @@
+---
+title: Week 3 Solutions
+author: Gov January Linear Algebra Review
+date: 2021-01-19
+output: tint::tintPdf
+header-includes:
+  - \usepackage{bm}
+  - \usepackage{graphicx}
+  - \usepackage{ulem}
+  - \usepackage{mathtools}
+---
+
+
+1. (Strang 4.1.13) Put bases for the subspaces $\bm{V}$ and $\bm{W}$ into the columns of the matrices $V$ and $W$. Explain why the test for orthogonal subspaces can be written $V^{T}W =$ zero matrix. This matches $\bm{v}^{T}\bm{w} = 0$ for orthogonal vectors. 
+
+\color{red}
+
+\noindent Remember from page 194, that \textbf{subspaces} -- some subset of vectors belonging to some greater \textbf{space}, e.g. $\mathbb{R}^2$ that can be \textbf{spanned} by some set of independent vectors (a \textbf{basis}) -- $\bm{V}$ and $\bm{W}$ are \textbf{orthogonal} when $v^{T}w = 0$ for every $v$ in $\bm{V}$ and every $w$ in $\bm{W}$. Two vectors are orthogonal if they're perpendicular or \textit{completely} unaligned directionally. If two subspaces are orthogonal, all pairs of vectors across the two subspaces are orthogonal. Since every vector in a subspace is a linear combination of basis vectors, this means that each subspace's basis vector must be orthogonal to the other subspace's basis vectors. \newline \ \newline
+
+\noindent An example are the horizontal and vertical planes in $\mathbb{R}^{3}$ that go through $(0,0,0)$:
+
+\begin{figure}
+\centering
+\includegraphics[width=0.5\textwidth]{orthogonal.png}
+\end{figure}
+
+\noindent $V^{T}W =$ zero matrix makes each column of $V$ orthogonal to each column of $W$. This means: each basis vector for $\bm{V}$ is orthogonal to each basis vector for $\bm{W}$. Then every $v$ in $\bm{V}$ (combinations of the basis vectors) is orthogonal to every $w$ in $\bm{W}$.
+
+\color{black}
+
+2. (Strang 4.1.25) Find $A^{T}A$ if the columns of $A$ are unit vectors, all mutually perpendicular. 
+
+\color{red}
+
+\noindent If the columns of $A$ are unit vectors, all mutually perpendicular, then $A^{T}A=I$. Simple but important! We usually call such a matrix $Q$.
+
+\color{black}
+
+3. (Strang 4.2.13) Suppose $A$ is the 4 by 4 identity matrix with its last column removed. $A$ is 4 by 3. Project $\bm{b} = (1,2,3,4)$ onto the column space of $A$. What shape is the projection matrix $P$ and what is $P$?
+
+\color{red}
+
+\noindent Recall in our first review session the intuitive geometric idea of projecting vector $a$ onto $b$: finding a point on vector $b$ that is the ``closest'' to vector $b$. The \textbf{projection} of a vector $b$ onto a subspace $\bm{A}$ is the closest vector $p$ in $\bm{A}$. Incidentally, $b -p $ ends up being orthogonal to $\bm{A}$. \newline \ \newline
+
+\noindent An example of some vector $x \in \mathbb{R}^{3}$ being projected down to the subspace in $\mathbb{R}^3$ made up by a horizontal plane is shown here:
+
+\begin{figure}
+\centering
+\includegraphics[width=0.5\textwidth]{projection.jpg}
+\end{figure}
+
+\noindent The formula for projection of a vector $\bm{b}$ onto a column space of $A$ (given on page 206 and some motivation on the following pages as well as [this lecture video](https://www.youtube.com/watch?v=Y_Ac6KiQ1t0)) is given by $p =  A (A^{T}A)^{-1}A^{T}b$. The first part of the right-hand side, $A (A^{T}A)^{-1}A^{T}$, is called the \textbf{projection matrix}. \newline \ \newline
+
+\noindent Let's get each of the components of the projection matrix:
+
+$$
+A = \begin{bmatrix} 1 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 1 \\ 0 & 0 & 0\end{bmatrix}
+$$
+$$
+A^{T}A = \begin{bmatrix} 1 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 1 \end{bmatrix} = I
+$$
+\noindent which you can get either by doing it out by hand, or in `R`:
+```{r}
+A <- rbind(c(1, 0, 0),
+           c(0, 1, 0),
+           c(0, 0, 1),
+           c(0, 0, 0))
+AtA <- t(A) %*% A
+print(AtA)
+```
+
+\noindent Note that the inverse of an identity matrix is itself, so $(A^{T}A)^{-1} = I$. \newline \ \newline
+
+\noindent Finally, we can get $P$ which involves computing $A \cdot A^{T}$ (which is different from $A^{T} \cdot A$):
+
+$$
+P = A \cdot (A^{T}A)^{-1} \cdot A^{T}  = A \cdot A^{T} = \begin{bmatrix} 1 & 0 & 0 & 0 \\ 0 & 1 & 0 & 0 \\ 0 & 0 & 1 & 0 \\ 0 & 0 & 0 & 0\end{bmatrix}
+$$
+\noindent which we can do by hand or in `R`:
+```{r}
+AAt <- A %*% t(A)
+print(AAt)
+```
+
+\noindent Now to get the projection $p$ we must do $P \cdot b$:
+$$
+P \cdot b = \begin{bmatrix} 1 & 0 & 0 & 0 \\ 0 & 1 & 0 & 0 \\ 0 & 0 & 1 & 0 \\ 0 & 0 & 0 & 0 \end{bmatrix} \cdot \begin{bmatrix} 1 \\ 2 \\ 3 \\ 4 \end{bmatrix} = \begin{bmatrix} 1 \\ 2 \\ 3 \\ 0 \end{bmatrix}
+$$
+
+
+\color{black}
+
+
+4. (Strang 4.2.21) Multiply the matrix $P = A(A^{T}A)^{-1}A^{T}$ by itself. Cancel to prove that $P^2=P$. Explain by $P(P\bm{b})$ always equals $P\bm{b}$. The vector $P\bm{b}$ is in the column space of $A$ so its projection onto that column space is \underline{\phantom{hello there}}.
+
+\color{red}
+
+\begin{align}
+P^2 = \Big(A(A^T A)^{-1} A^T\Big)^2 & = A (A^T A)^{-1} A^T \cdot A (A^T A)^{-1} A^T & \\
+& = A (A^T A)^{-1} (A^T A)  (A^T A)^{-1} A^T & \textnormal{(group together middle term)} \\
+& = A \xout{(A^T A)^{-1} (A^T A)}  (A^T A)^{-1} A^T & \textnormal{(cancel out inverses)} \\
+& = A (A^T A)^{-1} A^T & \textnormal{(cancel out inverses)} \\
+& = P
+\end{align}
+
+\noindent The implication is that we can't \textit{re-project} a vector once it's \textit{already projected}. $Pb$ is in the column space (where $P$ projects), and the projection of the projection $P(Pb)$ is also $Pb$.
+
+\color{black}
+
+5. (Strang 4.2.22) Prove that $P = A(A^{T}A)^{-1}A^{T}$ is symmetric by computing $P^{T}$. Remember that the inverse of a symmetric matrix is symmetric. 
+
+\color{red}
+\noindent A square matrix is \textbf{symmetric} if the upper triangular matrix entries are equal to the lower triangular matrix entries, e.g.
+
+$$
+\begin{bmatrix} 0 & 1 & 2 \\ 1 & 0 & 3 \\ 2 & 3 & 0 \end{bmatrix}
+$$
+Or in other words, $A^{T} = A$. Let's show this for $P$:
+
+\begin{align}
+P^{T} & = \Big(\underline{A} \cdot \underline{(A^T A)^{-1} A^T}\Big)^{T} & \\
+& =  \Big(\underline{(A^T A)^{-1}} \underline{A^T}\Big)^{T} \cdot \Big(A\Big)^{T} & \textnormal{(rule that } (XY)^{T} = Y^T X^T \textnormal{)} \\
+& = \Big( A  \Big) \cdot \Big((A^{T}A)^{-1} \Big)^{T} \cdot \Big(A\Big)^{T} & \textnormal{(re-apply this rule, but on the left-hand side)} \\
+\end{align}
+
+\noindent We would get exactly what we need if we could just show that $\Big((A^{T}A)^{-1} \Big)^{T} = (A^{T}A)^{-1}$. Is this true? \newline \ \newline
+
+\noindent Note that $A^{T}A$ is always going to produce a symmetric matrix (you can draw out an example in low dimensions). Therefore, by the given prompt, $(A^{T}A)^{-1}$ is \textit{also} symmetric. By definition of symmetry, then, $(A^{T}A)^{-1} = A^{T}A$, so indeed this is true and we're done. Huzzah!
+
+\color{black}
+
+6. (Strang 4.2.23) Is the error vector $\bm{e}$ orthogonal to $\bm{b}$ or $\bm{p}$ or $\bm{e}$ or $\widehat{\bm{x}}$? Show that $\Vert \bm{e} \Vert^2$ equals $\bm{e}^{T}\bm{b}$ which equals $\bm{b}^T\bm{b} - \bm{p}^T\bm{b}$. 
+
+\color{red}
+
+\noindent Let's back up and get a visual of how these quantities relate to each other (a slightly less technically correct version is shown on p. 208 of Strang):
+
+\begin{figure}
+\centering
+\includegraphics[width=0.6\textwidth]{projection3.png}
+\end{figure}
+
+\noindent Here, $\widehat{\bm{x}}$ is the single-dimensional equivalent of the projection matrix -- just one number that tells us where $b$ should project down to along the line $a$. \newline \ \newline
+
+\noindent We can see clearly here that the error vector $\bm{e}$ -- obtained by vector addition of $p$ and $b$ -- is orthogonal to $\bm{p}$, but not $\bm{b}$ or $\bm{e}$ (itself). $\widehat{\bm{x}}$ is simply a number and a vector cannot be orthogonal to a number. \newline \ \newline
+
+\noindent We can walk through the simplifications needed to show the first equality using the definition of length, the distributive property, the definition of $e$, and the above orthogonality we've discovered:
+$$
+||\bm{e}||^2 = \bm{e}^{T}\bm{e} = \bm{e}^T \cdot (\bm{b}-\bm{p}) = \bm{e}^T \cdot \bm{b} - \xout{\bm{e}^T \cdot \bm{p}} = \bm{e}^{T} \bm{b}
+$$
+\noindent We can again use the definition of $e$ and the fact that transposition can be distributed to get the rest of the way:
+$$
+\bm{e}^{T} \bm{b} = (\bm{b} - \bm{p})^T \bm{b} = \bm{b}^{T}\bm{b} - \bm{p}^{T}\bm{b}
+$$
+\noindent Huzzah, again!
+
+\color{black}
