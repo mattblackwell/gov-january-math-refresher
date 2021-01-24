@@ -58,6 +58,8 @@ We will use the Ed platform for a message board and place to post course materia
   - [Lecture 9: Independence, Basis, and Dimension](http://www.youtube.com/watch?v=yjBerM5jWsc)
   - [Lecture 10: The Four Fundamental Subspaces](http://www.youtube.com/watch?v=nHlE7EgJFds)
 - Exercises: [Week 2](https://github.com/mattblackwell/gov-january-math-refresher/raw/main/week_02/ps_2.pdf)
+- Solutions: [Week 2](https://github.com/mattblackwell/gov-january-math-refresher/raw/main/week_02/ps_2-solutions.pdf)
+- Review Slides: [Week 2](https://github.com/mattblackwell/gov-january-math-refresher/raw/main/week_02/ps_2-review.pdf)
 
 ## Week 3 (January 18th)
 
@@ -71,6 +73,8 @@ We will use the Ed platform for a message board and place to post course materia
   - [Lecture 16: Projection Matrices and Least Squares](http://www.youtube.com/watch?v=osh80YCg_GM)
   - [Lecture 17: Orthogonal Matrices and Gram-Schmidt](http://www.youtube.com/watch?v=uNsCkP9mgRk)
 - Exercises: [Week 3](https://github.com/mattblackwell/gov-january-math-refresher/raw/main/week_03/ps_3.pdf)
+- Solutions: [Week 3](https://github.com/mattblackwell/gov-january-math-refresher/raw/main/week_02/ps_3-solutions.pdf)
+- Review Slides: [Week 3](https://github.com/mattblackwell/gov-january-math-refresher/raw/main/week_02/ps_3-review.pdf)
 
 ## Extra material
 
