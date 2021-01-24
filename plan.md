@@ -73,8 +73,8 @@ We will use the Ed platform for a message board and place to post course materia
   - [Lecture 16: Projection Matrices and Least Squares](http://www.youtube.com/watch?v=osh80YCg_GM)
   - [Lecture 17: Orthogonal Matrices and Gram-Schmidt](http://www.youtube.com/watch?v=uNsCkP9mgRk)
 - Exercises: [Week 3](https://github.com/mattblackwell/gov-january-math-refresher/raw/main/week_03/ps_3.pdf)
-- Solutions: [Week 3](https://github.com/mattblackwell/gov-january-math-refresher/raw/main/week_02/ps_3-solutions.pdf)
-- Review Slides: [Week 3](https://github.com/mattblackwell/gov-january-math-refresher/raw/main/week_02/ps_3-review.pdf)
+- Solutions: [Week 3](https://github.com/mattblackwell/gov-january-math-refresher/raw/main/week_03/ps_3-solutions.pdf)
+- Review Slides: [Week 3](https://github.com/mattblackwell/gov-january-math-refresher/raw/main/week_03/ps_3-review.pdf)
 
 ## Extra material
 
