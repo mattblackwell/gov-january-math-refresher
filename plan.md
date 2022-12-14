@@ -1,6 +1,13 @@
 # January Linear Algebra Review for Gov 2002
 
-To get the most out of Gov 2002, it will be very useful to have a working understanding of the basics of linear algebra. For Gov PhD students, you covered some of this in the Math Prefresher, but probably not enough to keep it fresh in your mind. This year, we are organizing an optional, self-guided review of the basics of linear algebra. It will take place (virtually of course) in the three weeks before the start of the Spring semester (January 4th-January 22nd). The content will be based on MIT's famous 18.06 course, and we will follow along with the textbook and videos for this class. 
+Faculty Coordinator: [Matthew Blackwell](https://mattblackwell.org)
+Gov 2002 TFs: Ruofan Ma and Dom Valentino
+
+To get the most out of [Gov 2002](https://gov2002.mattblackwell.org), it will be very useful to have a working understanding of the basics of linear algebra. Fully understanding linear regression, which we will cover in the second half of Gov 2002, depends heavily on linear algebra. 
+
+For Gov PhD students, you covered some of this in the Math Prefresher, but probably not enough to keep it fresh in your mind. This year, we are organizing an optional, self-guided review of the basics of linear algebra. We have organized the material into three weeks before the start of the Spring semester (January 2nd-January 20th), but of course you can work at your own pace. The Gov 2002 TFs will also hold a review session each week to discuss the material and answer questions.
+
+The content will be based on MIT's famous 18.06 course, and we will follow along with the textbook and videos for this class. 
 
 - Strang, Gilbert. 2016. *Introduction to Linear Algebra, 5th Edition*. Wellesley-Cambridge Press: Wellesley, MA. [Amazon Link](https://www.amazon.com/Introduction-Linear-Algebra-Gilbert-Strang/dp/0980232775/)
 - [Strang Lecture Videos for MIT 18.06](https://web.mit.edu/18.06/www/videos.shtml)
@@ -22,7 +29,7 @@ For the 18.06 videos, as recommended by the lecturer, you may find things move m
 
 We will use the Ed platform for a message board and place to post course materials. If you sign up for the Linear Algebra review, we will add you to the Ed board for January and you can post questions there. 
 
-## Week 1 (January 4th)
+## Week 1 (January 2nd)
 
 - Topics: Vectors, Matrices, Solving Linear Equation, Inverses, Transposes
 - Reading: Strang Ch. 1-2
@@ -41,7 +48,7 @@ We will use the Ed platform for a message board and place to post course materia
 - Solutions: [Week 1](https://github.com/mattblackwell/gov-january-math-refresher/raw/main/week_01/ps_1-solutions.pdf)
 - Review Slides: [Week 1](https://github.com/mattblackwell/gov-january-math-refresher/raw/main/week_01/ps_1-review.pdf)
 
-## Week 2 (January 11th)
+## Week 2 (January 9th)
 
 - Topics: Vector spaces, rank, independence, basis
 - Reading: Strang Ch. 3 
@@ -61,7 +68,7 @@ We will use the Ed platform for a message board and place to post course materia
 - Solutions: [Week 2](https://github.com/mattblackwell/gov-january-math-refresher/raw/main/week_02/ps_2-solutions.pdf)
 - Review Slides: [Week 2](https://github.com/mattblackwell/gov-january-math-refresher/raw/main/week_02/ps_2-review.pdf)
 
-## Week 3 (January 18th)
+## Week 3 (January 16th)
 
 - Topics: Orthognality, projection
 - Reading: Strang Ch. 4
